@@ -1,0 +1,12 @@
+name: Brute Force Authentication Attempts
+description: Detects multiple failed logon attempts from the same source.
+severity: Medium
+tactics:
+  - CredentialAccess
+techniques:
+  - T1110
+query: |
+  SecurityEvent
+  | where EventID == 4625
+  | summarize Attempts=count() by Account, IpAddress, Computer, bin(TimeGenerated, 15m)
+  | where Attempts > 10
