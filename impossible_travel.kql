@@ -1,0 +1,4 @@
+SigninLogs
+| where ResultType == 0
+| project TimeGenerated, UserPrincipalName, IPAddress, Location, AppDisplayName
+| order by UserPrincipalName, TimeGenerated asc

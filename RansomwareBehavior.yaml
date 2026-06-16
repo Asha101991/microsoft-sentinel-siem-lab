@@ -1,0 +1,10 @@
+name: Potential Ransomware Behavior
+description: Detects suspicious process activity associated with possible ransomware behavior.
+severity: High
+tactics:
+  - Impact
+techniques:
+  - T1486
+query: |
+  DeviceProcessEvents
+  | where ProcessCommandLine has_any ("vssadmin delete shadows", "wbadmin delete", "bcdedit /set", "cipher /w")

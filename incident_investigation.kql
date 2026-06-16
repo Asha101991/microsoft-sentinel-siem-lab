@@ -1,0 +1,3 @@
+SecurityIncident
+| project TimeGenerated, Title, Severity, Status, Owner, IncidentNumber, Classification, Description
+| order by TimeGenerated desc

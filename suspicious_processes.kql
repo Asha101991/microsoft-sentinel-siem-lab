@@ -1,0 +1,4 @@
+DeviceProcessEvents
+| where FileName in~ ("cmd.exe", "powershell.exe", "wscript.exe", "cscript.exe", "rundll32.exe", "regsvr32.exe")
+| project TimeGenerated, DeviceName, AccountName, FileName, ProcessCommandLine, InitiatingProcessFileName
+| order by TimeGenerated desc

@@ -1,0 +1,11 @@
+name: Suspicious PowerShell Activity
+description: Detects suspicious PowerShell command-line activity.
+severity: High
+tactics:
+  - Execution
+techniques:
+  - T1059.001
+query: |
+  DeviceProcessEvents
+  | where FileName =~ "powershell.exe"
+  | where ProcessCommandLine has_any ("-enc", "EncodedCommand", "DownloadString", "IEX", "bypass")
